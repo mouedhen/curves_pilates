@@ -1,4 +1,4 @@
-import '../../../../common/services/api_service.dart';
+import '../../../../../common/services/api_service.dart';
 
 class AuthRepository {
   final ApiService _apiService;
