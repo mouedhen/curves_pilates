@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../common/widgets/loading_indicator.dart';
+// import '../../../../features/home/presentation/screens/home_screen.dart'; // No longer needed here
 import '../provider/auth_provider.dart';
+import './registration_screen.dart'; // Placeholder for RegistrationScreen
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -40,6 +42,13 @@ class _LoginScreenState extends State<LoginScreen> {
             return const LoadingIndicator();
           }
 
+          // Clear password field on error
+          if (authProvider.state == AuthState.error) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              _passwordController.clear();
+            });
+          }
+
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -69,14 +78,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: const TextStyle(color: Colors.red),
                     ),
                   ),
-                if (authProvider.state == AuthState.authenticated)
-                  const Padding(
-                    padding: EdgeInsets.only(top: 16.0),
-                    child: Text(
-                      'Login Successful!',
-                      style: TextStyle(color: Colors.green),
-                    ),
-                  ),
+                // Removed the direct "Login Successful!" message here
+                const SizedBox(height: 16), // Spacing
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const RegistrationScreen()),
+                    );
+                  },
+                  child: const Text('Create an account'),
+                ),
               ],
             ),
           );
@@ -84,4 +95,6 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
+  // Removed didChangeDependencies method as AuthGate now handles navigation
 }
