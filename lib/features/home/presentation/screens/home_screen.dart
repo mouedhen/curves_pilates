@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../authentication/presentation/provider/auth_provider.dart';
+import 'package:curves_pilates/features/authentication/presentation/provider/auth_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

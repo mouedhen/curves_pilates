@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../provider/auth_provider.dart';
-import '../screens/login_screen.dart';
-import '../../../home/presentation/screens/home_screen.dart';
+import 'package:curves_pilates/features/authentication/presentation/provider/auth_provider.dart';
+import 'package:curves_pilates/features/authentication/presentation/screens/login_screen.dart';
+import 'package:curves_pilates/features/home/presentation/screens/home_screen.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});

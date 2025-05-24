@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart'; // For debugPrint
 import 'package:flutter/material.dart';
-import '../../domain/entities/user.dart'; // Import the User entity
-import '../../domain/use_cases/login_use_case.dart';
+import 'package:curves_pilates/features/authentication/domain/entities/user.dart'; // Import the User entity
+import 'package:curves_pilates/features/authentication/domain/use_cases/login_use_case.dart';
 
 enum AuthState { initial, loading, authenticated, error }
 

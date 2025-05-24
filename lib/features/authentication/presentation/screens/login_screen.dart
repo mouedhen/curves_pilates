@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../common/widgets/loading_indicator.dart';
-// import '../../../../features/home/presentation/screens/home_screen.dart'; // No longer needed here
-import '../provider/auth_provider.dart';
-import './registration_screen.dart'; // Placeholder for RegistrationScreen
+import 'package:curves_pilates/common/widgets/loading_indicator.dart';
+import 'package:curves_pilates/features/authentication/presentation/provider/auth_provider.dart';
+import 'package:curves_pilates/features/authentication/presentation/screens/registration_screen.dart'; // Placeholder for RegistrationScreen
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
