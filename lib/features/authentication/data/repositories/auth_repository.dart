@@ -1,5 +1,5 @@
-import 'package:curves_pilates/common/services/api_service.dart';
-import 'package:curves_pilates/features/authentication/domain/entities/user.dart';
+import '../../../../../common/services/api_service.dart';
+import '../../domain/entities/user.dart';
 
 class AuthRepository {
   final ApiService _apiService;

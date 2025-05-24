@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:mockito/mockito.dart';
-import 'package:curves_pilates/features/authentication/presentation/widgets/auth_gate.dart';
-import 'package:curves_pilates/features/authentication/presentation/provider/auth_provider.dart';
-import 'package:curves_pilates/features/authentication/presentation/screens/login_screen.dart';
-import 'package:curves_pilates/features/home/presentation/screens/home_screen.dart';
-import 'package:curves_pilates/features/authentication/domain/entities/user.dart';
+import 'package:flutter_foundations_01_task_manager_app/features/authentication/presentation/widgets/auth_gate.dart';
+import 'package:flutter_foundations_01_task_manager_app/features/authentication/presentation/provider/auth_provider.dart';
+import 'package:flutter_foundations_01_task_manager_app/features/authentication/presentation/screens/login_screen.dart';
+import 'package:flutter_foundations_01_task_manager_app/features/home/presentation/screens/home_screen.dart';
+import 'package:flutter_foundations_01_task_manager_app/features/authentication/domain/entities/user.dart';
 // LoginUseCase is not directly used by AuthGate, so its mock is not needed here.
 
 // Define MockAuthProvider if it's not centrally available
