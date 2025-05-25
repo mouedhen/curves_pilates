@@ -33,7 +33,7 @@ class _EnterVerificationCodeScreenState
     final enteredCode = _codeController.text.trim();
     if (enteredCode.length == 6) { // Check length directly
       if (enteredCode == widget.verificationCode) {
-        Navigator.of(context).pushReplacement(
+        Navigator.of(context).pushReplacement( 
           MaterialPageRoute(
             builder: (context) => ResetPasswordScreen(email: widget.email),
           ),
@@ -103,10 +103,10 @@ class _EnterVerificationCodeScreenState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
+              Text( 
                 'Veuillez entrer le code à 6 chiffres envoyé à ${widget.email}.',
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: const TextStyle( 
                   fontSize: 15.0,
                   color: AppColors.mediumGrayText,
                 ),
@@ -129,7 +129,7 @@ class _EnterVerificationCodeScreenState
                 submittedPinTheme: submittedPinTheme,
                 validator: (s) {
                   if (s == null || s.length != 6) {
-                    return 'Code must be 6 digits';
+                    return 'Code must be 6 digits'; 
                   }
                   return null;
                 },
@@ -139,9 +139,9 @@ class _EnterVerificationCodeScreenState
               ),
               // const SizedBox(height: 24), // Original SizedBox before "Verify Code" button
               // "Renvoyer le code" TextButton
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: Center(
+              Padding( 
+                padding: const EdgeInsets.symmetric(vertical: 16.0), 
+                child: Center( 
                   child: TextButton(
                     onPressed: () {
                       // Placeholder action for resending code
@@ -154,10 +154,10 @@ class _EnterVerificationCodeScreenState
                     child: const Text(
                       'Renvoyer le code',
                       style: TextStyle(
-                        fontSize: 15.0,
+                        fontSize: 15.0, 
                         color: AppColors.brandColor,
-                        decoration: TextDecoration.underline,
-                        decorationColor: AppColors.brandColor,
+                        decoration: TextDecoration.underline, 
+                        decorationColor: AppColors.brandColor, 
                       ),
                     ),
                   ),
