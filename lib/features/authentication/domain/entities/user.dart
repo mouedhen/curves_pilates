@@ -6,6 +6,7 @@ class User {
   final String? email; // Email is optional in this example
   final String? displayName;
   final DateTime? registrationDate;
+  final String? token;
 
   User({
     required this.id,
@@ -13,18 +14,30 @@ class User {
     this.email,
     this.displayName,
     this.registrationDate,
+    this.token,
   });
 
   // Optional: Add methods for comparing users
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is User &&
-              runtimeType == other.runtimeType &&
-              id == other.id;
+      other is User &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          username == other.username &&
+          email == other.email &&
+          displayName == other.displayName &&
+          registrationDate == other.registrationDate &&
+          token == other.token;
 
   @override
-  int get hashCode => id.hashCode;
+  int get hashCode =>
+      id.hashCode ^
+      username.hashCode ^
+      email.hashCode ^
+      displayName.hashCode ^
+      registrationDate.hashCode ^
+      token.hashCode;
 
   // Optional: Add a method to create a User from a JSON object
   factory User.fromJson(Map<String, dynamic> json) {
@@ -36,6 +49,7 @@ class User {
       registrationDate: json['registration_date'] != null
           ? DateTime.parse(json['registration_date'] as String)
           : null,
+      token: json['token'] as String?,
     );
   }
 
@@ -47,11 +61,12 @@ class User {
       'email': email,
       'display_name': displayName,
       'registration_date': registrationDate?.toIso8601String(),
+      'token': token,
     };
   }
 
   @override
   String toString() {
-    return 'User{id: $id, username: $username, email: $email, displayName: $displayName, registrationDate: $registrationDate}';
+    return 'User{id: $id, username: $username, email: $email, displayName: $displayName, registrationDate: $registrationDate, token: $token}';
   }
 }
