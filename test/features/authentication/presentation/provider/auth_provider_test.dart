@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:flutter_foundations_01_task_manager_app/features/authentication/presentation/provider/auth_provider.dart';
-import 'package:flutter_foundations_01_task_manager_app/features/authentication/domain/use_cases/login_use_case.dart';
-import 'package:flutter_foundations_01_task_manager_app/features/authentication/domain/entities/user.dart';
+import 'package:curves_pilates/features/authentication/presentation/provider/auth_provider.dart';
+import 'package:curves_pilates/features/authentication/domain/use_cases/login_use_case.dart';
+import 'package:curves_pilates/features/authentication/domain/entities/user.dart';
 import 'package:flutter/material.dart'; // Required for ChangeNotifier
 
 // Create a mock for LoginUseCase
