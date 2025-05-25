@@ -34,13 +34,13 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(RequestPasswordResetScreen), findsOneWidget, reason: "RequestPasswordResetScreen should be present after tap");
-      
+
       // Verify AppBar Title (Optional but good)
       expect(find.descendant(of: find.byType(AppBar), matching: find.text('Réinitialisation du mot de passe')), findsOneWidget);
-      
+
       // Verify Instruction Text
       expect(find.text('Entrez votre adresse e-mail pour recevoir les instructions de réinitialisation.'), findsOneWidget);
-      
+
       // Verify Email Field Label and TextFormField
       expect(find.text('Adresse e-mail ou numéro de téléphone'), findsOneWidget);
       expect(find.byType(TextFormField), findsOneWidget); // Assuming it's the only TextFormField visible
