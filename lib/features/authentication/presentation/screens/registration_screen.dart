@@ -427,7 +427,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 if (value == null || value.isEmpty) {
                   return 'Please enter a password';
                 }
-                if (value.length < 6) { 
+                if (value.length < 6) {
                   return 'Password must be at least 6 characters';
                 }
                 return null;
@@ -492,7 +492,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           ],
         ),
         const SizedBox(height: 16.0),
-        
+
         CheckboxListTile(
           title: const Text(
             "J'accepte les conditions d'utilisation de Curves", // New label text
