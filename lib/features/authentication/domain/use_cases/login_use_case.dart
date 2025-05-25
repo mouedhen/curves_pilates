@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import '../../data/repositories/auth_repository.dart';
 import '../entities/user.dart';
 
@@ -6,10 +8,12 @@ class LoginUseCase {
 
   LoginUseCase(this._authRepository);
 
-  Future<User?> execute(String username, String password) async {
-    // You could add more business logic here before calling the repository
-    // For example, input validation, logging, etc.
-    final user = await _authRepository.login(username, password);
-    return user;
+  FutureOr<User?> execute(String username, String password) {
+    final trimmedUsername = username.trim();
+    final trimmedPassword = password.trim();
+    if (trimmedUsername.isEmpty || trimmedPassword.isEmpty) {
+      throw ArgumentError('Username and password must not be empty.');
+    }
+    return _authRepository.login(trimmedUsername, trimmedPassword);
   }
 }
