@@ -299,6 +299,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
-  // Removed didChangeDependencies method as AuthGate now handles navigation
 }
