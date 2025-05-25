@@ -79,7 +79,7 @@ void main() {
     testWidgets('EnterVerificationCodeScreen code verification logic', (WidgetTester tester) async {
       // Test setup
       const String testEmail = 'user@example.com';
-      const String correctCode = '123456'; 
+      const String correctCode = '123456';
 
       await tester.pumpWidget(
         const MaterialApp( // Ensure MaterialApp wraps for theming, directionality etc.
@@ -102,7 +102,7 @@ void main() {
       // B.3 Update Interactions for Incorrect Code
       await tester.enterText(find.byType(Pinput), '654321'); // Target Pinput
       await tester.tap(find.widgetWithText(ElevatedButton, 'Confirmer')); // Tap "Confirmer"
-      await tester.pumpAndSettle(); 
+      await tester.pumpAndSettle();
       expect(find.text('Invalid verification code. Please try again.'), findsOneWidget, reason: "Should show invalid code SnackBar");
 
       // B.4 Update Interactions for Correct Code
