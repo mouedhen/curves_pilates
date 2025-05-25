@@ -17,26 +17,29 @@ void main() {
         ),
       );
 
-      // Verify the number of TextFormFields (Name, First Name, Birth Date, Phone, Address, Email, Password, Confirm Password)
+      // Verify labels
+      expect(find.text('Nom'), findsOneWidget);
+      expect(find.text('Prénom'), findsOneWidget);
+      expect(find.text('Date de naissance'), findsOneWidget);
+      expect(find.text('Numéro de téléphone'), findsOneWidget);
+      expect(find.text('Adresse complète'), findsOneWidget);
+      expect(find.text('Titre'), findsOneWidget); // Label for dropdown
+      expect(find.text('Adresse e-mail'), findsOneWidget);
+      expect(find.text('Mot de passe'), findsOneWidget);
+      expect(find.text('Confirmer le mot de passe'), findsOneWidget);
+
+      // Verify Input Widget Types and Count
       expect(find.byType(TextFormField), findsNWidgets(8));
+      expect(find.byType(DropdownButtonFormField<String>), findsOneWidget);
 
-      // Verify specific fields by their labelText.
-      // Note: Using find.widgetWithText is a common way, but it requires the labelText to be directly a Text widget.
-      // InputDecorations often have labelText as a property, so a more robust way might be needed if this fails,
-      // such as finding by a common ancestor or by a predicate.
-      expect(find.widgetWithText(TextFormField, 'Name'), findsOneWidget);
-      expect(find.widgetWithText(TextFormField, 'First Name'), findsOneWidget);
-      expect(find.widgetWithText(TextFormField, 'Birth Date'), findsOneWidget);
-      expect(find.widgetWithText(TextFormField, 'Phone Number'), findsOneWidget);
-      expect(find.widgetWithText(TextFormField, 'Complete Address'), findsOneWidget);
-      expect(find.widgetWithText(DropdownButtonFormField, 'Title'), findsOneWidget);
-      expect(find.widgetWithText(TextFormField, 'Email Address'), findsOneWidget);
-      expect(find.widgetWithText(TextFormField, 'Password'), findsOneWidget);
-      expect(find.widgetWithText(TextFormField, 'Confirm Password'), findsOneWidget);
+      // Verify Checkbox
+      expect(find.widgetWithText(CheckboxListTile, "J'accepte les conditions d'utilisation de Curves"), findsOneWidget);
 
-      // Verify CheckboxListTile and ElevatedButton
-      expect(find.byType(CheckboxListTile), findsOneWidget);
-      expect(find.widgetWithText(ElevatedButton, 'Register'), findsOneWidget);
+      // Verify Button
+      expect(find.widgetWithText(ElevatedButton, 'CONTINUER'), findsOneWidget);
+
+      // Verify Password Visibility Icons
+      expect(find.byIcon(Icons.visibility_off), findsNWidgets(2));
     });
 
     testWidgets('navigates from LoginScreen to RegistrationScreen', (WidgetTester tester) async {
@@ -59,7 +62,7 @@ void main() {
       expect(find.byType(LoginScreen), findsOneWidget);
 
       // Find the "Create an account" button on LoginScreen
-      final createAccountButtonFinder = find.widgetWithText(TextButton, 'Create an account');
+      final createAccountButtonFinder = find.widgetWithText(ElevatedButton, 'CRÉER UN COMPTE'); // Updated finder
       expect(createAccountButtonFinder, findsOneWidget);
 
       // Tap the button
@@ -69,6 +72,24 @@ void main() {
       // Verify RegistrationScreen is now present and LoginScreen is not
       expect(find.byType(RegistrationScreen), findsOneWidget);
       expect(find.byType(LoginScreen), findsNothing);
+    });
+
+    testWidgets('Titre dropdown shows correct French options', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: RegistrationScreen(),
+        ),
+      );
+
+      // Tap the "Titre" DropdownButtonFormField to open the items.
+      // We find the DropdownButtonFormField itself first.
+      await tester.tap(find.byType(DropdownButtonFormField<String>));
+      await tester.pumpAndSettle(); // Wait for the dropdown items to appear
+
+      // Verify each option is present. Using .last because the label 'Titre' might also be found by find.text.
+      expect(find.text('Madame').last, findsOneWidget);
+      expect(find.text('Mademoiselle').last, findsOneWidget);
+      expect(find.text('Monsieur').last, findsOneWidget);
     });
   });
 }
