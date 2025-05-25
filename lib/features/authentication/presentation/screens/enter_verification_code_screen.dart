@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './reset_password_screen.dart'; // Import ResetPasswordScreen
 
 class EnterVerificationCodeScreen extends StatefulWidget {
   final String email;
@@ -30,16 +31,11 @@ class _EnterVerificationCodeScreenState
     if (_formKey.currentState!.validate()) {
       final enteredCode = _codeController.text.trim();
       if (enteredCode == widget.verificationCode) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text(
-                  'Code Verified (Next step: New Password Screen - Not Implemented)')),
+        Navigator.of(context).pushReplacement( // Use pushReplacement
+          MaterialPageRoute(
+            builder: (context) => ResetPasswordScreen(email: widget.email),
+          ),
         );
-        // Optionally, navigate to a new password screen here in a future step or pop.
-        // For example:
-        // Navigator.of(context).pushReplacement(
-        //   MaterialPageRoute(builder: (context) => CreateNewPasswordScreen(email: widget.email)),
-        // );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
