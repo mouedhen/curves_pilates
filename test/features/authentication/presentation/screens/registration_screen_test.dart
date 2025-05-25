@@ -31,10 +31,10 @@ void main() {
       // Verify Input Widget Types and Count
       expect(find.byType(TextFormField), findsNWidgets(8));
       expect(find.byType(DropdownButtonFormField<String>), findsOneWidget);
-
+      
       // Verify Checkbox
       expect(find.widgetWithText(CheckboxListTile, "J'accepte les conditions d'utilisation de Curves"), findsOneWidget);
-
+      
       // Verify Button
       expect(find.widgetWithText(ElevatedButton, 'CONTINUER'), findsOneWidget);
 

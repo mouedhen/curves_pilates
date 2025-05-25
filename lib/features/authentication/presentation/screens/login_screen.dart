@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../common/styling/app_colors.dart';
+import '../../../../common/styling/app_colors.dart'; // Import AppColors
 import '../../../../common/widgets/loading_indicator.dart';
 import '../provider/auth_provider.dart';
 import './registration_screen.dart';
@@ -17,7 +17,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
-  bool _isPasswordHidden = true;
+  bool _isPasswordHidden = true; // Added state variable
 
   @override
   void dispose() {
@@ -41,10 +41,12 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0), // Overall padding
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
+              // To make buttons full width later
               children: <Widget>[
+                // Header
                 const Text(
                   'Curves Pilates Club',
                   textAlign: TextAlign.center,
@@ -55,20 +57,28 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 40.0),
+                // Spacing after header
+
+                // Consumer for the rest of the content that depends on AuthProvider
                 Consumer<AuthProvider>(
                   builder: (context, authProvider, _) {
                     if (authProvider.state == AuthState.loading) {
                       return const Center(child: LoadingIndicator());
                     }
+
+                    // Logic to clear password on error
                     if (authProvider.state == AuthState.error) {
                       WidgetsBinding.instance.addPostFrameCallback((_) {
                         _passwordController.clear();
                       });
                     }
+
+                    // Return the Column containing the form elements
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         TextFormField(
+                          // Changed from TextField
                           controller: _usernameController,
                           decoration: InputDecoration(
                             labelText: 'Adresse e-mail',
@@ -102,10 +112,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         const SizedBox(height: 16),
                         TextFormField(
+                          // Changed from TextField
                           controller: _passwordController,
                           obscureText: _isPasswordHidden,
+                          // Bind to state variable
                           decoration: InputDecoration(
                             labelText: 'Mot de passe',
+                            // New label
                             labelStyle: const TextStyle(
                               color: AppColors.darkBrownText,
                               fontSize: 16.0,
@@ -147,8 +160,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontSize: 16.0,
                           ),
                         ),
+                        // "Forgot password?" link - Moved and restyled
                         Padding(
-                          padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                          padding: const EdgeInsets.only(
+                            top: 8.0,
+                            bottom: 8.0,
+                          ), // Adjust vertical padding
                           child: Align(
                             alignment: Alignment.centerRight,
                             child: TextButton(
@@ -162,7 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 );
                               },
                               child: const Text(
-                                'Mot de passe oublié',
+                                'Mot de passe oublié', // New text
                                 style: TextStyle(
                                   fontSize: 14.0,
                                   color: AppColors.mediumBrownLink,
@@ -171,14 +188,20 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
+                        // Spacing before Login button, adjusted from 24 to accommodate link above
                         const SizedBox(height: 16),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.darkBrownText,
+                            // Dark brown background
                             foregroundColor: AppColors.whiteText,
+                            // Text color
                             minimumSize: const Size(double.infinity, 50),
+                            // Full width and 50px height
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(
+                                10.0,
+                              ), // Rounded corners
                             ),
                           ),
                           onPressed: () => _login(context),
@@ -199,6 +222,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               style: const TextStyle(color: Colors.red),
                             ),
                           ),
+                        // "OU" Divider
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 20.0),
                           child: Row(
@@ -230,14 +254,22 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                           ),
                         ),
+                        // const SizedBox(height: 16), // Adjusted spacing below
                         ElevatedButton(
+                          // Changed from TextButton
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.inputBoxBrown,
+                            // Lighter brown background
                             foregroundColor: AppColors.darkBrownText,
+                            // Text color
                             minimumSize: const Size(double.infinity, 50),
+                            // Full width and 50px height
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(
+                                10.0,
+                              ), // Rounded corners
                             ),
+                            // elevation: 0, // Optional: if a flatter look is desired
                           ),
                           onPressed: () {
                             Navigator.of(context).push(

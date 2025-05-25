@@ -34,12 +34,26 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(RequestPasswordResetScreen), findsOneWidget, reason: "RequestPasswordResetScreen should be present after tap");
-      expect(find.widgetWithText(TextFormField, 'Email Address'), findsOneWidget, reason: "Email field should be on RequestPasswordResetScreen");
-      expect(find.widgetWithText(ElevatedButton, 'Send Verification Code'), findsOneWidget, reason: "Send button should be on RequestPasswordResetScreen");
+
+      // Verify AppBar Title (Optional but good)
+      expect(find.descendant(of: find.byType(AppBar), matching: find.text('Réinitialisation du mot de passe')), findsOneWidget);
+
+      // Verify Instruction Text
+      expect(find.text('Entrez votre adresse e-mail pour recevoir les instructions de réinitialisation.'), findsOneWidget);
+
+      // Verify Email Field Label and TextFormField
+      expect(find.text('Adresse e-mail ou numéro de téléphone'), findsOneWidget);
+      expect(find.byType(TextFormField), findsOneWidget); // Assuming it's the only TextFormField visible
+
+      // Verify Button Text
+      expect(find.widgetWithText(ElevatedButton, 'Envoyer un lien de réinitialisation'), findsOneWidget, reason: "Send button should be on RequestPasswordResetScreen");
+
+      // Verify Help Text
+      expect(find.text('Si vous ne recevez pas d’e-mail, vérifiez votre dossier spam ou réessayez.'), findsOneWidget);
 
       // Navigate to EnterVerificationCodeScreen
-      await tester.enterText(find.widgetWithText(TextFormField, 'Email Address'), 'test@example.com');
-      await tester.tap(find.widgetWithText(ElevatedButton, 'Send Verification Code'));
+      await tester.enterText(find.byType(TextFormField), 'test@example.com'); // Find by type, assuming it's the only one
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Envoyer un lien de réinitialisation'));
       await tester.pumpAndSettle();
 
       expect(find.byType(EnterVerificationCodeScreen), findsOneWidget, reason: "EnterVerificationCodeScreen should be present after sending code");
