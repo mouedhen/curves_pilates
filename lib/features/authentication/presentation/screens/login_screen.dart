@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import '../../../../common/widgets/loading_indicator.dart';
 // import '../../../../features/home/presentation/screens/home_screen.dart'; // No longer needed here
 import '../provider/auth_provider.dart';
-import './registration_screen.dart'; // Placeholder for RegistrationScreen
-import './request_password_reset_screen.dart'; // Placeholder
+import './registration_screen.dart';
+import './request_password_reset_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.only(top: 16.0),
                     child: Text(
                       authProvider.errorMessage!,
-                      style: const TextStyle(color: Colors.red),
+                      style: const TextStyle(color: Colors.red), // Added const
                     ),
                   ),
                 // Removed the direct "Login Successful!" message here

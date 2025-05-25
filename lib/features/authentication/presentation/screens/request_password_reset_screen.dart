@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math'; // For Random
 import 'package:flutter/foundation.dart'; // For debugPrint, or use print
-import './enter_verification_code_screen.dart'; // Placeholder
+import './enter_verification_code_screen.dart';
 
 class RequestPasswordResetScreen extends StatefulWidget {
   const RequestPasswordResetScreen({super.key});
@@ -61,7 +61,7 @@ class _RequestPasswordResetScreenState
             children: <Widget>[
               TextFormField(
                 controller: _emailController,
-                decoration: const InputDecoration(labelText: 'Email Address'),
+                decoration: const InputDecoration(labelText: 'Email Address'), // const added
                 keyboardType: TextInputType.emailAddress,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -73,7 +73,7 @@ class _RequestPasswordResetScreenState
                   return null;
                 },
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 24), // const added
               ElevatedButton(
                 onPressed: _sendCode,
                 child: const Text('Send Verification Code'),

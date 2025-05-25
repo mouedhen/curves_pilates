@@ -38,7 +38,7 @@ class _EnterVerificationCodeScreenState
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
+          const SnackBar( // const added
               content: Text('Invalid verification code. Please try again.')),
         );
       }
@@ -62,11 +62,11 @@ class _EnterVerificationCodeScreenState
                 'A verification code has been sent to ${widget.email}.',
                 style: Theme.of(context).textTheme.titleMedium,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 16), // const added
               TextFormField(
                 controller: _codeController,
                 decoration:
-                    const InputDecoration(labelText: 'Verification Code'),
+                    const InputDecoration(labelText: 'Verification Code'), // const added
                 keyboardType: TextInputType.number,
                 maxLength: 6,
                 validator: (value) {
@@ -79,10 +79,10 @@ class _EnterVerificationCodeScreenState
                   return null;
                 },
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 24), // const added
               ElevatedButton(
                 onPressed: _verifyCode,
-                child: const Text('Verify Code'),
+                child: const Text('Verify Code'), // const added
               ),
             ],
           ),

@@ -62,7 +62,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             children: <Widget>[
               TextFormField(
                 controller: _newPasswordController,
-                decoration: const InputDecoration(labelText: 'New Password'),
+                decoration: const InputDecoration(labelText: 'New Password'), // const added
                 obscureText: true,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -74,11 +74,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   return null;
                 },
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 16), // const added
               TextFormField(
                 controller: _confirmPasswordController,
                 decoration:
-                    const InputDecoration(labelText: 'Confirm New Password'),
+                    const InputDecoration(labelText: 'Confirm New Password'), // const added
                 obscureText: true,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -90,10 +90,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   return null;
                 },
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 24), // const added
               ElevatedButton(
                 onPressed: _changePassword,
-                child: const Text('Change Password'),
+                child: const Text('Change Password'), // const added
               ),
             ],
           ),

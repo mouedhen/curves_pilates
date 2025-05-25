@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
-import 'package:curves_pilates/features/authentication/presentation/screens/registration_screen.dart';
-import 'package:curves_pilates/features/authentication/presentation/screens/login_screen.dart';
-import 'package:curves_pilates/features/authentication/presentation/provider/auth_provider.dart';
-import 'package:curves_pilates/features/authentication/domain/use_cases/login_use_case.dart';
-import 'package:curves_pilates/features/authentication/data/repositories/auth_repository.dart';
-import 'package:curves_pilates/common/services/api_service.dart';
+import 'package:flutter_foundations_01_task_manager_app/features/authentication/presentation/screens/registration_screen.dart';
+import 'package:flutter_foundations_01_task_manager_app/features/authentication/presentation/screens/login_screen.dart';
+import 'package:flutter_foundations_01_task_manager_app/features/authentication/presentation/provider/auth_provider.dart';
+import 'package:flutter_foundations_01_task_manager_app/features/authentication/domain/use_cases/login_use_case.dart';
+import 'package:flutter_foundations_01_task_manager_app/features/authentication/data/repositories/auth_repository.dart';
+import 'package:flutter_foundations_01_task_manager_app/common/services/api_service.dart';
 
 void main() {
   group('RegistrationScreen Tests', () {

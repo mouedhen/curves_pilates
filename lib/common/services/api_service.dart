@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:curves_pilates/features/authentication/domain/entities/user.dart';
+import 'package:flutter_foundations_01_task_manager_app/features/authentication/domain/entities/user.dart';
 
 // Simulate an API service
 class ApiService {
