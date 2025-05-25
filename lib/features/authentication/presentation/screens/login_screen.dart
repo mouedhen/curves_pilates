@@ -5,6 +5,7 @@ import '../../../../common/widgets/loading_indicator.dart';
 // import '../../../../features/home/presentation/screens/home_screen.dart'; // No longer needed here
 import '../provider/auth_provider.dart';
 import './registration_screen.dart'; // Placeholder for RegistrationScreen
+import './request_password_reset_screen.dart'; // Placeholder
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -87,6 +88,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     );
                   },
                   child: const Text('Create an account'),
+                ),
+                const SizedBox(height: 8), // Spacing
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const RequestPasswordResetScreen()),
+                    );
+                  },
+                  child: const Text('Forgot password?'),
                 ),
               ],
             ),

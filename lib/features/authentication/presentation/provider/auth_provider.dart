@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart'; // For debugPrint
 import 'package:flutter/material.dart';
-
 import '../../domain/entities/user.dart'; // Import the User entity
 import '../../domain/use_cases/login_use_case.dart';
 
@@ -26,23 +25,18 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final user = await _loginUseCase.execute(username, password);
-      if (user != null) {
-        _currentUser = user;
+      final user = await _loginUseCase.execute(username, password); // Changed variable name
+      if (user != null) { // Check if user is not null
+        _currentUser = user; // Set current user
         _state = AuthState.authenticated;
         debugPrint('Login successful: ${user.username}, Token: ${user.token}');
       } else {
-        _currentUser = null;
+        _currentUser = null; // Explicitly set to null
         _state = AuthState.error;
         _errorMessage = 'Invalid username or password.';
       }
-    } on ArgumentError catch (e) {
-      _currentUser = null;
-      _state = AuthState.error;
-      _errorMessage = e.message?.toString() ?? 'Invalid input.';
-      debugPrint('Login ArgumentError: $e');
     } catch (e) {
-      _currentUser = null;
+      _currentUser = null; // Also clear user on error
       _state = AuthState.error;
       _errorMessage = 'An error occurred during login.';
       debugPrint('Login Error: $e');
@@ -53,8 +47,8 @@ class AuthProvider extends ChangeNotifier {
 
   void logout() {
     _state = AuthState.initial;
-    _currentUser = null;
-    _errorMessage = null;
+    _currentUser = null; // Clear current user
+    _errorMessage = null; // Clear any error messages
     notifyListeners();
     // In a real app, you'd also clear any stored tokens from secure storage here.
   }
