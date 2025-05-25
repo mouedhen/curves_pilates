@@ -30,7 +30,7 @@ void main() {
 
       // Navigate to RequestPasswordResetScreen
       expect(find.byType(LoginScreen), findsOneWidget, reason: "LoginScreen should be present initially");
-      await tester.tap(find.widgetWithText(TextButton, 'Forgot password?'));
+      await tester.tap(find.widgetWithText(TextButton, 'Mot de passe oublié')); // Updated finder text
       await tester.pumpAndSettle();
 
       expect(find.byType(RequestPasswordResetScreen), findsOneWidget, reason: "RequestPasswordResetScreen should be present after tap");
